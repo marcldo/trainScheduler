@@ -12,16 +12,26 @@ var config = {
 // Initialize Firebase
 firebase.initializeApp(config);
 
+const database = firebase.database();
+
 console.log("loded");
 
 document.getElementById("submitTrain").addEventListener("click", (event) => {
     event.preventDefault();
     console.log("listening");
-    let trainName = document.querySelector("#trainName").value.trim();
-    let destination = document.querySelector("#destination").value.trim();
-    let firstTrain = document.querySelector("#firstTrain").value.trim();
-    let freq = document.querySelector("#freq").value.trim();
+    let train = {
+        trainName: document.querySelector("#trainName").value.trim(),
+        destination: document.querySelector("#destination").value.trim(),
+        firstTrain: document.querySelector("#firstTrain").value.trim(),
+        freq: document.querySelector("#freq").value.trim()
+    };
 
-    console.log();
-})
+    database.ref("/trains").push(train);
+
+    console.log(train.trainName, train.destination, train.firstTrain, train.freq);
+});
+
+database.ref("/trains").on("child_added", (snapshot) => {
+    console.log(snapshot.val());
+});
 
