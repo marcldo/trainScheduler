@@ -1,9 +1,10 @@
 .container{
     background-color: navy;
     width:900px;
-    height:900px;
+    height:auto;
     margin: 0 auto;
     font-family: 'Josefin Sans', sans-serif;
+    box-sizing: border-box;
 }
 
 .backgroundImg{
@@ -18,8 +19,7 @@
 
 
 .tblContainer{
-    margin: 200px 30px;
-    margin-bottom: 30px;
+    margin: 200px 70px; 
     background-color: rgba(255, 255, 255, 85%);
     border: solid #bbbbbb 2px;
     padding-top: 25px;
@@ -29,7 +29,14 @@
 table{
     margin: 0 auto;
     text-align: left;
+}
 
+tbody tr{
+    border-bottom: 1px solid  #bbbbbb ;
+  }
+
+tr:nth-child(even) {
+    background-color:  rgb(241, 241, 241);
 }
 
 .mainHeading{
@@ -38,12 +45,16 @@ table{
 
 .mainHeading i{
     font-size: 25px;
-    color: magenta;
+    color: navy;
+}
+
+td, th{
+    padding:10px
 }
 
 td{
     text-align: left;
-    padding-bottom:10px
+    
 }
 
 th{
@@ -53,5 +64,52 @@ tbody{
     text-align: left;
 }
 
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,1); /*fallback color*/
+    background-color: rgba(0,0,0,0.4); /*Black w/ opacity*/
+    width: 100%;
+    height: 100%;
+    
+}
+
+.formContainer{
+    background-color: rgba(255, 255, 255, 95%);
+    border: solid #bbbbbb 2px;
+    margin: 100px auto;
+    padding: 50px;
+    width:340px;
+    
+}
+
+.formGroup {
+    padding: 10px;
+    
+}
+
+.formBorder{
+    border: solid #bbbbbb 2px;
+}
 
 
+
+.btn{
+    font-weight: bold;
+    font-size: 13px;
+    height: 30px;
+    width: 120px;
+    background-color: navy;
+    border-radius: 15px;
+    color: #ffffff;
+}
+
+
+.btn:hover{
+
+    background-color: rgb(158, 158, 228);
+    color: black;
+}

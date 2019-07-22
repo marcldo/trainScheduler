@@ -26,6 +26,8 @@ document.getElementById("submitTrain").addEventListener("click", (event) => {
         freq: document.querySelector("#freq").value.trim()
     };
 
+    document.getElementById("modal").style.display = "none";
+
     nextTrainTime(train);
     database.ref("/trains").push(train);
 
@@ -78,9 +80,18 @@ function nextTrainTime(train) {
     train.minAway = tMinutesTillTrain;
     train.nextArrival = moment(nextTrain).format("hh:mm");
 
-}
+};
 
 
+document.getElementById("addTrain").addEventListener("click", (event) => {
+    event.preventDefault();
+    document.getElementById("modal").style.display = "block";
+});
+
+document.getElementById("cancel").addEventListener("click", (event) => {
+    event.preventDefault();
+    document.getElementById("modal").style.display = "none";
+});
 
 
 
