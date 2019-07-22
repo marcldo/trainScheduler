@@ -1,3 +1,57 @@
-.tblContainer{
-    padding-bottom: 30px;
+.container{
+    background-color: navy;
+    width:900px;
+    height:900px;
+    margin: 0 auto;
+    font-family: 'Josefin Sans', sans-serif;
 }
+
+.backgroundImg{
+    background-image: url(../images/Kings_Cross_station.jpg);
+    background-repeat: no-repeat; 
+    width: 100%;
+    height:100%;
+    overflow:hidden;
+    float: left;
+    margin:0 auto;
+}
+
+
+.tblContainer{
+    margin: 200px 30px;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 85%);
+    border: solid #bbbbbb 2px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+table{
+    margin: 0 auto;
+    text-align: left;
+
+}
+
+.mainHeading{
+    font-size: 30px;
+}
+
+.mainHeading i{
+    font-size: 25px;
+    color: magenta;
+}
+
+td{
+    text-align: left;
+    padding-bottom:10px
+}
+
+th{
+    font-size: 20px;
+}
+tbody{
+    text-align: left;
+}
+
+
+
