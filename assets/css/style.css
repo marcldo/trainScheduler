@@ -26,6 +26,11 @@
     padding-bottom: 25px;
 }
 
+.tblContainer h1{
+    padding: 20px;
+    padding-left: 28px;
+}
+
 table{
     margin: 0 auto;
     text-align: left;

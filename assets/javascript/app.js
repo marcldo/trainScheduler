@@ -1,5 +1,5 @@
 
-// Your web app's Firebase configuration
+
 var config = {
     apiKey: "AIzaSyAzk2feAG8E4Hl5g-C9IlxLTUd95NTbVQ0",
     authDomain: "trainscheduler-9ce49.firebaseapp.com",
@@ -14,7 +14,21 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-console.log("loded");
+//show clock
+updateTime();
+//update clock every 1 seconds
+setInterval(updateTime, 1000);
+
+function updateTime() {
+    let dt = new Date(), hours = dt.getHours(), minutes = dt.getMinutes();
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    document.getElementById("time").textContent = `${hours}:${minutes}`;
+}
+
+
+
 
 document.getElementById("submitTrain").addEventListener("click", (event) => {
     event.preventDefault();
@@ -52,22 +66,25 @@ database.ref("/trains").on("child_added", (snapshot) => {
 
 });
 
-// Solved Mathematically
-// Test case 2:
-// 16 - 00 = 16
-// 16 % 7 = 2 (Modulus is the remainder)
-// 7 - 2 = 5 minutes away
-// 5 + 3:16 = 3:21
+
+
 
 function nextTrainTime(train) {
+    // Solved Mathematically
+    // Test case 2:
+    // 16 - 00 = 16
+    // 16 % 7 = 2 (Modulus is the remainder)
+    // 7 - 2 = 5 minutes away
+    // 5 + 3:16 = 3:21
+
 
     let firstTrainConverted = moment(train.firstTrain, "HH:mm").subtract(1, "years");
-    console.log(firstTrainConverted);
+
 
     let currentTime = moment();
 
     let diffTime = moment().diff(moment(firstTrainConverted), "minutes");
-    console.log(diffTime)
+
 
     let tRemainder = diffTime % train.freq;
 
@@ -75,7 +92,7 @@ function nextTrainTime(train) {
 
     let nextTrain = moment().add(tMinutesTillTrain, "minutes");
 
-    console.log(tMinutesTillTrain, moment(nextTrain).format("hh:mm"));
+
 
     train.minAway = tMinutesTillTrain;
     train.nextArrival = moment(nextTrain).format("hh:mm");
@@ -92,6 +109,7 @@ document.getElementById("cancel").addEventListener("click", (event) => {
     event.preventDefault();
     document.getElementById("modal").style.display = "none";
 });
+
 
 
 
