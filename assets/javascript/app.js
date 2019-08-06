@@ -28,11 +28,8 @@ function updateTime() {
 }
 
 
-
-
 document.getElementById("submitTrain").addEventListener("click", (event) => {
     event.preventDefault();
-    console.log("listening");
     let train = {
         trainName: document.querySelector("#trainName").value.trim(),
         destination: document.querySelector("#destination").value.trim(),
@@ -45,7 +42,7 @@ document.getElementById("submitTrain").addEventListener("click", (event) => {
     nextTrainTime(train);
     database.ref("/trains").push(train);
 
-    console.log(train.trainName, train.destination, train.firstTrain, train.freq, train.minAway, train.nextArrival);
+
 });
 
 database.ref("/trains").on("child_added", (snapshot) => {
@@ -65,8 +62,6 @@ database.ref("/trains").on("child_added", (snapshot) => {
     document.getElementById("trainTableBody").insertAdjacentHTML("beforeEnd", trainsHTML);
 
 });
-
-
 
 
 function nextTrainTime(train) {
